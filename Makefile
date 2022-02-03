@@ -6,7 +6,7 @@
 #    By: tmasur <tmasur@mail.de>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/21 18:21:21 by tmasur            #+#    #+#              #
-#    Updated: 2022/02/02 22:49:57 by b                ###   ########.fr        #
+#    Updated: 2022/02/03 01:52:45 by tmasur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,11 +30,11 @@ OBJ			:=	$(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT_A)
+$(NAME): $(OBJ)
 	@ar rcs $(NAME) $^
 
 %.o: %.c
-	@gcc $(CFLAGS) $(NOLINK) $< -o $@
+	@gcc $(CFLAGS) $(NOLINKING) $< -o $@
 
 clean:
 	@rm -f $(OBJ)
