@@ -6,7 +6,7 @@
 /*   By: tmasur <tmasur@mail.de>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 23:35:22 by tmasur            #+#    #+#             */
-/*   Updated: 2022/02/02 00:36:09 by tmasur           ###   ########.fr       */
+/*   Updated: 2022/02/03 08:18:23 by tmasur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ static int	ft_print_int(int n, int fd)
 
 static int	ft_print_hex(int n, int fd, int is_uppercase)
 {
-	int		counter;
-	unsigned int nu;
+	int				counter;
+	unsigned int	nu;
 
 	nu = (unsigned int)n;
 	counter = 1;
