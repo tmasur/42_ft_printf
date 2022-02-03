@@ -6,7 +6,7 @@
 #    By: tmasur <tmasur@mail.de>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/21 18:21:21 by tmasur            #+#    #+#              #
-#    Updated: 2022/02/03 11:57:58 by tmasur           ###   ########.fr        #
+#    Updated: 2022/02/03 19:52:15 by tmasur           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,15 +30,18 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@ar rcs $(NAME) $^
+	@echo "$(NAME) created and indexed"
 
 %.o: %.c
 	@gcc $(CFLAGS) $(NOLINKING) $< -o $@
 
 clean:
 	@rm -f $(OBJ)
+	@echo "OBJ deleted"
 
 fclean: clean
 	@rm -f $(NAME)
+	@echo "$(NAME) deleted"
 
 re: fclean all
 
