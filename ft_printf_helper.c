@@ -6,7 +6,7 @@
 /*   By: tmasur <tmasur@mail.de>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 03:15:33 by tmasur            #+#    #+#             */
-/*   Updated: 2022/02/02 00:26:39 by tmasur           ###   ########.fr       */
+/*   Updated: 2022/02/03 08:20:25 by tmasur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_print_str(char *s, int fd)
 {
-	int len;
+	int	len;
 
 	if (!s)
 		return (ft_print_str("(null)", 1));
@@ -36,10 +36,10 @@ int	ft_print_address(unsigned long long int n, int fd, int prefix)
 	return (counter);
 }
 
-int ft_print_uint(unsigned int n, int fd)
+int	ft_print_uint(unsigned int n, int fd)
 {
 	long	r;
-	int counter;
+	int		counter;
 
 	r = n;
 	counter = 1;
