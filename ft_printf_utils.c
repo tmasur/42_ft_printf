@@ -6,7 +6,7 @@
 /*   By: tmasur <tmasur@mail.de>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/31 03:15:33 by tmasur            #+#    #+#             */
-/*   Updated: 2022/02/03 12:57:28 by tmasur           ###   ########.fr       */
+/*   Updated: 2022/02/16 18:39:00 by tmasur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,28 +25,33 @@ int	ft_print_str(char *s, int fd)
 
 int	ft_print_address(unsigned long long int n, int fd, int prefix)
 {
-	int	counter;
+	int	len;
 
-	counter = 1;
+	if (!n)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
+	len = 1;
 	if (prefix)
-		counter += ft_print_str("0x", 1);
+		len += ft_print_str("0x", 1);
 	if (n > 15)
-		counter += ft_print_address(n / 16, fd, 0);
+		len += ft_print_address(n / 16, fd, 0);
 	ft_putchar_fd("0123456789abcdef"[n % 16], fd);
-	return (counter);
+	return (len);
 }
 
 int	ft_print_uint(unsigned int n, int fd)
 {
 	long	r;
-	int		counter;
+	int		len;
 
 	r = n;
-	counter = 1;
+	len = 1;
 	if (r >= 10)
 	{
-		counter += ft_print_uint(r / 10, fd);
+		len += ft_print_uint(r / 10, fd);
 	}
 	ft_putchar_fd(r % 10 + '0', fd);
-	return (counter);
+	return (len);
 }

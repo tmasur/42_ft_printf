@@ -6,7 +6,7 @@
 /*   By: tmasur <tmasur@mail.de>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/30 23:35:22 by tmasur            #+#    #+#             */
-/*   Updated: 2022/02/03 08:18:23 by tmasur           ###   ########.fr       */
+/*   Updated: 2022/02/16 18:29:47 by tmasur           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,25 +19,25 @@ static int	ft_print_char(int c, int fd);
 
 int	ft_printf(const char *s, ...)
 {
-	int		counter;
+	int		len;
 	int		fd;
 	va_list	vargs;
 
-	counter = 0;
+	len = 0;
 	fd = 1;
 	va_start(vargs, s);
 	while (*s)
 	{
 		if (*s == '%')
 		{
-			counter += ft_write_arg(vargs, *(++s), fd);
+			len += ft_write_arg(vargs, *(++s), fd);
 			s++;
 		}
 		else
-			counter += ft_print_char(*(s++), fd);
+			len += ft_print_char(*(s++), fd);
 	}
 	va_end(vargs);
-	return (counter);
+	return (len);
 }
 
 static int	ft_write_arg(va_list args, char c, int fd)
@@ -64,37 +64,37 @@ static int	ft_write_arg(va_list args, char c, int fd)
 static int	ft_print_int(int n, int fd)
 {
 	int	tmp;
-	int	counter;
+	int	len;
 
 	tmp = n;
-	counter = 0;
+	len = 0;
 	if (n <= 0)
-		counter++;
+		len++;
 	while (n != 0)
 	{
 		n /= 10;
-		counter++;
+		len++;
 	}
 	ft_putnbr_fd(tmp, fd);
-	return (counter);
+	return (len);
 }
 
 static int	ft_print_hex(int n, int fd, int is_uppercase)
 {
-	int				counter;
+	int				len;
 	unsigned int	nu;
 
 	nu = (unsigned int)n;
-	counter = 1;
+	len = 1;
 	if (nu > 15)
 	{
-		counter += ft_print_hex(nu / 16, fd, is_uppercase);
+		len += ft_print_hex(nu / 16, fd, is_uppercase);
 	}
 	if (is_uppercase)
 		ft_putchar_fd("0123456789ABCDEF"[nu % 16], fd);
 	else
 		ft_putchar_fd("0123456789abcdef"[nu % 16], fd);
-	return (counter);
+	return (len);
 }
 
 static int	ft_print_char(int c, int fd)
