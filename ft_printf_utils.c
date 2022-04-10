@@ -28,10 +28,7 @@ int	ft_print_address(unsigned long long int n, int fd, int prefix)
 	int	len;
 
 	if (!n)
-	{
-		write(1, "(nil)", 5);
-		return (5);
-	}
+		return (ft_print_str("(nil)", 1));
 	len = 1;
 	if (prefix)
 		len += ft_print_str("0x", 1);
@@ -43,15 +40,13 @@ int	ft_print_address(unsigned long long int n, int fd, int prefix)
 
 int	ft_print_uint(unsigned int n, int fd)
 {
-	long	r;
 	int		len;
 
-	r = n;
 	len = 1;
-	if (r >= 10)
+	if (n >= 10)
 	{
-		len += ft_print_uint(r / 10, fd);
+		len += ft_print_uint(n / 10, fd);
 	}
-	ft_putchar_fd(r % 10 + '0', fd);
+	ft_putchar_fd(n % 10 + '0', fd);
 	return (len);
 }
