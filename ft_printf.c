@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int	ft_write_arg(va_list args, char c, int fd);
+static int	ft_print_arg(va_list args, char c, int fd);
 static int	ft_print_int(int n, int fd);
 static int	ft_print_hex(int n, int fd, int is_uppercase);
 static int	ft_print_char(int c, int fd);
@@ -30,7 +30,7 @@ int	ft_printf(const char *s, ...)
 	{
 		if (*s == '%')
 		{
-			len += ft_write_arg(vargs, *(++s), fd);
+			len += ft_print_arg(vargs, *(++s), fd);
 			s++;
 		}
 		else
@@ -40,7 +40,7 @@ int	ft_printf(const char *s, ...)
 	return (len);
 }
 
-static int	ft_write_arg(va_list args, char c, int fd)
+static int	ft_print_arg(va_list args, char c, int fd)
 {
 	if (c == 'd' || c == 'i')
 		return (ft_print_int(va_arg(args, int), fd));
